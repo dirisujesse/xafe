@@ -1,0 +1,1 @@
+for F in *_t.svg; do svgcleaner $F $F"_cleaned.svg"; done
