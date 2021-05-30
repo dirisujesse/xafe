@@ -22,4 +22,5 @@ class XfSvgs {
   static const String search= "$_basePath/search.svg";
   static const String trash = "$_basePath/trash.svg";
   static const String visibility = "$_basePath/visibility.svg";
+  static const String addIcon = "$_basePath/add_icon.svg";
 }

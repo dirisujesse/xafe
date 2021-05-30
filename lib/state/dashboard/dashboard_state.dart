@@ -14,12 +14,12 @@ class DashboardState extends ChangeNotifier {
 
   final List<DashbaordPageData> pages = [
     DashbaordPageData(
-      page: const HomeTab(),
+      page: HomeTab(),
       name: "Home",
       icon: XfSvgs.home,
     ),
     DashbaordPageData(
-      page: const CategoryTab(),
+      page: CategoryTab(),
       name: "Categories",
       icon: XfSvgs.search,
     ),

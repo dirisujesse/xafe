@@ -77,7 +77,7 @@ class XfFormatter {
       locale: "en_US",
       name: ignoreSymbol ? '' : symbol ?? '\$',
       symbol: ignoreSymbol ? "" : "$symbol${spaceIcon ? " " : ""}",
-      decimalDigits: 0,
+      decimalDigits: 2,
     );
     if (amount.isEmpty || amount == "null") {
       return "${symbol}0";
@@ -101,7 +101,7 @@ class XfFormatter {
       locale: "en_US",
       name: ignoreSymbol ? '' : symbol ?? '\$',
       symbol: ignoreSymbol ? "" : "$symbol${spaceIcon ? " " : ""}",
-      decimalDigits: 0,
+      decimalDigits: 2,
     );
     if (amount.isEmpty || amount == "null") {
       return "${symbol}0";

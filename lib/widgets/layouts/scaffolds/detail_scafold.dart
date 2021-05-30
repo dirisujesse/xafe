@@ -21,7 +21,7 @@ class DetailScaffold extends StatefulWidget {
     this.headerRatio = .26,
     this.controller,
     this.implyLeading = true,
-  }) : assert(headerRatio >= .2 && headerRatio <= 1);
+  }) : assert(headerRatio >= .15 && headerRatio <= 1);
 
   @override
   State<StatefulWidget> createState() => _DetailScaffoldState();
