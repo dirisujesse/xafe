@@ -3,7 +3,6 @@ import 'package:xafe/style/text_styles.dart';
 import 'package:xafe/utils/extensions.dart';
 import 'package:xafe/utils/typedefs.dart';
 import 'package:xafe/widgets/fragments/app_bar/app_appbar.dart';
-import 'package:xafe/widgets/fragments/buttons/app_back_button.dart';
 import 'package:xafe/widgets/fragments/buttons/bottom_button.dart';
 import 'package:xafe/widgets/fragments/indicators/app_spinner.dart';
 import 'package:xafe/widgets/fragments/spacers/app_sized_box.dart';
@@ -11,21 +10,15 @@ import 'package:xafe/widgets/typography/app_text.dart';
 
 class FormWidget extends StatefulWidget {
   final List<Widget> fields;
-  final String? title;
+  final String title;
   final String? subTitle;
-  final TextAlign titleAlignment;
   final OnPressed? onSubmit;
-  final bool maintainSafeArea;
-  final bool showBackBtn;
 
   FormWidget({
     required this.fields,
-    this.title,
+    required this.title,
     this.onSubmit,
     this.subTitle,
-    this.titleAlignment = TextAlign.left,
-    this.maintainSafeArea = true,
-    this.showBackBtn = true,
   });
 
   @override
@@ -45,33 +38,23 @@ class _FormWidgetState extends State<FormWidget> {
     return GestureDetector(
       child: CustomScrollView(
         slivers: [
-          if (widget.maintainSafeArea)
-            SliverAppBar(
-              leading: (widget.showBackBtn && Navigator.of(context).canPop())
-                  ? AppBackButton()
-                  : Offstage(),
-              automaticallyImplyLeading: false,
-              pinned: false,
-              floating: true,
-              elevation: 0,
-            ),
           SliverPadding(
-            padding: scaler.insets.fromLTRB(5, 0, 5, 4),
+            padding: scaler.insets.symmetric(horizontal: 5),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  if (widget.title != null)
-                    XfText(
-                      widget.title ?? '',
-                      style: XfTextStyle.header.copyWith(height: 1.3),
-                      textAlign: widget.titleAlignment,
+                  XfSizedBox(height: 5),
+                  XfText(
+                    widget.title,
+                    style: XfTextStyle.header.copyWith(
+                      fontWeight: FontWeight.w500,
                     ),
+                  ),
                   if (widget.subTitle != null) const XfSizedBox(height: 1.5),
                   if (widget.subTitle != null)
                     XfText(
                       widget.subTitle!,
                       style: XfTextStyle.subTitle,
-                      textAlign: widget.titleAlignment,
                     ),
                 ],
               ),
@@ -82,6 +65,7 @@ class _FormWidgetState extends State<FormWidget> {
               left: 5,
               right: 5,
               bottom: 1,
+              top: widget.subTitle == null ? 4 : 2,
             ),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(

@@ -24,7 +24,7 @@ class XfThemes {
       color: XfColors.white,
       elevation: 0,
     ),
-    dividerColor: XfColors.darkGrey,
+    dividerColor: XfColors.grey,
     bottomAppBarColor: XfColors.white,
     bottomAppBarTheme: base.bottomAppBarTheme.copyWith(
       elevation: 0,

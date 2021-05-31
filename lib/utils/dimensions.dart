@@ -19,7 +19,7 @@ class _XfDimension {
     if (_queryData.size.width > 500) return ScreenType.TABLET;
     return ScreenType.MOBILE;
   }
-
+  
   double get topInset {
     return _queryData.padding.top;
   }
