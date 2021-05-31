@@ -50,7 +50,7 @@ class _AuthScreenState extends State<AuthScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const AppLogo(),
-            XfSizedBox(height: 2.5),
+            XfSizedBox(height: 1),
             XfText(
               "Smart Budgeting",
               style: XfTextStyle.bold.copyWith(

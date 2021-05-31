@@ -3,6 +3,7 @@ import 'package:xafe/models/config/app_config.dart';
 import 'package:xafe/models/enums/env.dart';
 // import 'package:xafe/services/gallery/gallery_service.dart';
 import 'package:xafe/state/auth/auth_state.dart';
+import 'package:xafe/state/budget/budget_state.dart';
 import 'package:xafe/state/dashboard/dashboard_state.dart';
 import 'package:xafe/state/splash/splash_state.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,10 @@ class StateWrapper extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => SplashState.instance,
+          lazy: true,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BudgetState.instance,
           lazy: true,
         ),
         ChangeNotifierProvider(

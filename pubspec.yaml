@@ -12,8 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  camera: ^0.8.1
-  cached_network_image:
   dio: ^4.0.0
   flutter_svg: ^0.21.0+1
   hive: ^2.0.3 
