@@ -30,6 +30,7 @@ class HomeTab extends StatelessWidget {
     return CustomPaint(
       painter: GradientPainter(),
       child: DetailScaffold(
+        controller: controller,
         headerRatio: .5,
         body: Container(
           padding: scaler.insets.symmetric(horizontal: 5),
@@ -91,7 +92,11 @@ class HomeTab extends StatelessWidget {
                   ),
                   Spacer(),
                   InkWell(
-                    child: SvgPicture.asset(XfSvgs.edit),
+                    child: PaddedWidget(
+                      SvgPicture.asset(XfSvgs.edit),
+                      horizontalPadding: 0,
+                      verticalPadding: 1,
+                    ),
                     onTap: () {},
                   )
                 ],

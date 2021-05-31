@@ -26,7 +26,7 @@ class AppSpinner extends StatelessWidget {
   }
 }
 
-class AppLinearProgress extends StatelessWidget {
+class AppLinearProgress extends StatefulWidget {
   final double? extent;
   final double width;
   final double height;
@@ -42,18 +42,50 @@ class AppLinearProgress extends StatelessWidget {
   });
 
   @override
+  State<StatefulWidget> createState() {
+    return _AppLinearProgressState();
+  }
+}
+
+class _AppLinearProgressState extends State<AppLinearProgress>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      duration: Duration(seconds: 1),
+      lowerBound: 0,
+      upperBound: widget.extent ?? .001,
+      vsync: this,
+    )..forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _ctrl.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
-      child: CustomPaint(
-        painter: ProgressPainter(
-          color: valueColor,
-          inactiveColor:
-              inferInactiveColor ? valueColor.withOpacity(.1) : XfColors.grey,
-          extent: extent ?? 0,
-        ),
-        child: XfSizedBox(
-          height: height,
-          width: width,
+      child: XfSizedBox(
+        height: widget.height,
+        width: widget.width,
+        child: AnimatedBuilder(
+          animation: _ctrl,
+          builder: (_, __) {
+            return CustomPaint(
+              painter: ProgressPainter(
+                color: widget.valueColor,
+                inactiveColor: widget.inferInactiveColor
+                    ? widget.valueColor.withOpacity(.1)
+                    : XfColors.grey,
+                extent: _ctrl.value,
+              ),
+            );
+          },
         ),
       ),
     );

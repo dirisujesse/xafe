@@ -150,10 +150,7 @@ class _SigupFormWidgetState extends State<SignupFormWidget> {
         children: [
           Padding(
             padding: scaler.insets.symmetric(horizontal: 5),
-            child: Hero(
-              tag: "progress",
-              child: AppLinearProgress(extent: widget.progress),
-            ),
+            child: AppLinearProgress(extent: widget.progress),
           ),
           BottomButton(
             onTap: widget.onSubmit,
